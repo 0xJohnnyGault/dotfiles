@@ -1,0 +1,178 @@
+command_timeout = 10000
+
+format = """
+[░▒▓](#a3aed2)\
+$os\
+$container\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+$git_branch\
+[](fg:#394260 bg:#212736)\
+[](fg:#212736 bg:#1d2230)\
+$git_status\
+[ ](fg:#1d2230)\
+$fill\
+$cmd_duration\
+$python\
+$rust\
+$nodejs\
+$golang\
+\n$character"""
+
+add_newline = false 
+
+# Other languages configurations:
+c.disabled = true
+cmake.disabled = true
+haskell.disabled = true
+perl.disabled = true
+package.disabled = true
+lua.disabled = true
+java.disabled = true
+
+[fill]
+symbol = " "
+
+[character]
+vimcmd_symbol = "[NORMAL ❯](#73cef4)"
+success_symbol = "[❯](green)"
+error_symbol = '[✗](bold red)'
+format = "$symbol "
+
+[hostname]
+disabled = true
+ssh_only = true
+style = "#d3b987"
+format = "[@$hostname]($style)[ ❯](#767676)"
+
+[cmd_duration]
+min_time = 5000
+format = "[ $duration](#767676)"
+
+# OS glyph (uses [os.symbols] below). Starship detects distro on Linux.
+[os]
+format = "[ $symbol ](bg:#a3aed2 fg:#090c0c)"
+disabled = false
+
+[container]
+symbol = "🐳"
+format = "[$symbol](bg:#a3aed2 fg:#090c0c)"
+
+[directory]
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+
+[git_status]
+# $all status$ahead_behind
+format = "$all_status$ahead_behind($style)"
+style = "fg:#769ff0"
+conflicted = "="
+ahead =	"⇡"
+behind = "⇣"
+diverged = "⇕⇡"
+up_to_date = ""
+untracked = ""
+stashed = ""
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = ""
+
+[docker_context]
+symbol = " "
+format = "[ ❮ ](#767676)[$symbol($context)]($style)"
+
+[nodejs]
+symbol = " "
+format = "[ ❮ ](#767676)[$symbol($version)]($style)"
+version_format = "v${major}.${minor}"
+
+[python]
+symbol = " "
+format = "[ ❮ ](#767676)[$symbol($version)]($style)"
+version_format = "v${major}.${minor}"
+
+[rust]
+symbol = " "
+format = "[ ❮ ](#767676)[$symbol($version)]($style)"
+version_format = "v${major}.${minor}"
+
+[golang]
+symbol = " "
+format = "[ ❮ ](#767676)[$symbol($version)]($style)"
+version_format = "v${major}.${minor}"
+
+[os.symbols]
+AIX = " "
+AlmaLinux = " "
+Alpaquita = " "
+Alpine = " "
+ALTLinux = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = " "
+Artix = " "
+Bluefin = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Elementary = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = " "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = " "
+InstantOS = " "
+Ios = "󰀷 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = " "
+OpenCloudOS = " "
+openEuler = " "
+openSUSE = " "
+OracleLinux = "󰺡 "
+PikaOS = " "
+Pop = " "
+Raspbian = " "
+Redhat = "󱄛 "
+RedHatEnterprise = "󱄛 "
+Redox = "󰀘 "
+RockyLinux = " "
+Solus = " "
+SUSE = " "
+Ubuntu = " "
+Ultramarine = " "
+Unknown = " "
+Uos = " "
+Void = " "
+Windows = "󰍲 "
+Zorin = " "
+
