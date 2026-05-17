@@ -29,16 +29,13 @@ zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-export EDITOR='nvim'
-export VISUAL="nvim"
-export GPG_TTY="${TTY:-$(tty)}"
 export ZOXIDE_CMD_OVERRIDE="cd"
 export ZSH_AUTOSUGGEST_STRATEGY=(history)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#aaaaaa"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git starship fzf-tab zoxide zsh-autosuggestions mise)
+plugins=(starship fzf-tab zoxide zsh-autosuggestions mise)
 
 source $ZSH/oh-my-zsh.sh
 
