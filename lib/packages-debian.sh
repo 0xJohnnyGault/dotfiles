@@ -11,10 +11,8 @@ install_packages() {
     btop \
     curl \
     eza \
-    fastfetch \
     fd-find \
     fzf \
-    gcc \
     git \
     jq \
     just \

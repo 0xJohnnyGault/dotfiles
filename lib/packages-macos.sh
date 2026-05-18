@@ -1,31 +1,43 @@
 #!/usr/bin/env bash
-# macOS package map. Sourced by install.sh.
 
-is_installed() {
-  brew list "$1" &>/dev/null || brew list --cask "$1" &>/dev/null
+prepare_distro() {
+  info "Preparing distro..."
+  bootstrap_pkgmgr
 }
 
-PKG_INSTALL="brew install"
+install_packages() {
+  info "Installing packages..."
+  brew install \
+    atuin \
+    btop \
+    curl \
+    eza \
+    fd-find \
+    fzf \
+    git \
+    jq \
+    just \
+    lazydocker \
+    lazygit \
+    mise \
+    neovim \
+    ripgrep \
+    starship \
+    stow \
+    tig \
+    vim \
+    wget \
+    zoxide 
 
-# Always install
-CORE_PKGS=(
-  git zsh stow fzf eza zoxide neovim tmux ripgrep mosh asdf
-)
-
-# Server profile additions
-SERVER_PKGS=(
-  lazygit yazi btop
-)
+  curl --proto '=https' --tlsv1.2 -LsSf https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
+  git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+}
 
 # Desktop profile additions (macOS GUI apps via cask)
 DESKTOP_CASKS=(
   zed ghostty
 )
-
-# Stow lists per profile
-STOW_CORE=(zsh git nvim tmux ssh)
-STOW_SERVER=(lazygit yazi btop)
-STOW_DESKTOP=(macos-tools ideavim)
 
 # macOS-specific bootstrap
 bootstrap_pkgmgr() {
@@ -38,4 +50,23 @@ bootstrap_pkgmgr() {
   fi
 }
 
-brew bundle --file="$DOTFILES_DIR/Brewfile"
+stow_packages() {
+  info "Stowing packages..."
+  backup_zsh_dotfiles
+  stow -t "$HOME" -R zsh
+  stow -t "$HOME" -R atuin
+  stow -t "$HOME" -R starship
+}
+
+backup_zsh_dotfiles() {
+  local DATE
+  DATE=$(date +%Y%m%d%H%M%S)
+
+  for F in "$HOME/.zshrc" "$HOME/.zprofile"; do
+    if [ -f "$F" ]; then
+      mv "$F" "${F}-${DATE}"
+      info "Backed up $F to ${F}-${DATE}"
+    fi
+  done
+}
+
