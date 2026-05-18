@@ -1,0 +1,19 @@
+shell-integration = zsh
+shell-integration-features = ssh-terminfo,ssh-env
+
+font-family = 0xProto Nerd Font Mono
+
+cursor-click-to-move = false
+cursor-style = block
+cursor-style-blink = false
+
+
+copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
+
+window-step-resize = false
+background-blur-radius = 15
+window-padding-balance = true
+mouse-hide-while-typing = true
+
+keybind = shift+enter=text:\x1b\r

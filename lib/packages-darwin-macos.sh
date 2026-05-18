@@ -51,17 +51,18 @@ bootstrap_pkgmgr() {
 
 stow_packages() {
   info "Stowing packages..."
-  backup_zsh_dotfiles
+  backup_dotfiles
   stow -t "$HOME" -R zsh
   stow -t "$HOME" -R atuin
   stow -t "$HOME" -R starship
+  stow -t "$HOME" -R ghostty
 }
 
-backup_zsh_dotfiles() {
+backup_dotfiles() {
   local DATE
   DATE=$(date +%Y%m%d%H%M%S)
 
-  for F in "$HOME/.zshrc" "$HOME/.zprofile"; do
+  for F in "$HOME/.zshrc" "$HOME/.zprofile" "$HOME/.config/atuin/config.toml" "$HOME/.config/starship.toml"; do
     if [ -f "$F" ]; then
       mv "$F" "${F}-${DATE}"
       info "Backed up $F to ${F}-${DATE}"
