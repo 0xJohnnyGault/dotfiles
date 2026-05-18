@@ -81,4 +81,7 @@ esac
 # Machine-local fragment (gitignored, holds gcloud paths, work aliases, etc.)
 [[ -r "$HOME/.zsh-local.sh" ]] && source "$HOME/.zsh-local.sh"
 
-eval "$(atuin init zsh)"
+# Up arrow does regular search, and ctrl-R uses Atuin TUI
+unset HISTFILE
+eval "$(atuin init zsh --disable-up-arrow)"
+fc -R =(atuin search --cmd-only --limit 500)
