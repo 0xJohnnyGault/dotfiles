@@ -12,7 +12,7 @@ install_packages() {
     btop \
     curl \
     eza \
-    fd-find \
+    fd \
     fzf \
     git \
     jq \
@@ -29,15 +29,14 @@ install_packages() {
     wget \
     zoxide 
 
+  brew services start atuin
+  brew install --cask font-0xProto-nerd-font
+  brew install --cask ghostty
+
   curl --proto '=https' --tlsv1.2 -LsSf https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
   git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 }
-
-# Desktop profile additions (macOS GUI apps via cask)
-DESKTOP_CASKS=(
-  zed ghostty
-)
 
 # macOS-specific bootstrap
 bootstrap_pkgmgr() {

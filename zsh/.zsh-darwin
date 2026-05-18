@@ -3,3 +3,5 @@ alias fix-spotlight-globally="find ~ -type d -path './Code*' -prune -o -path './
 
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
