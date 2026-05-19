@@ -27,6 +27,7 @@ install_packages() {
     tig \
     vim \
     wget \
+    zellij \
     zoxide 
 
   brew services start atuin

@@ -57,6 +57,9 @@ alias rm='rm -vr'
 alias vi="nvim"
 alias vim="nvim"
 alias z='zoxide'
+alias za='zellij attach'
+alias zls='zellij ls'
+alias znew='zellij new'
 alias zz='zoxide query'
 
 # OS / distro detection — selects the right shell fragment.

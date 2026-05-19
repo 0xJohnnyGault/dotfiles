@@ -17,3 +17,12 @@ window-padding-balance = true
 mouse-hide-while-typing = true
 
 keybind = shift+enter=text:\x1b\r
+
+# Add horizontal padding (left/right margins)
+window-padding-x = 8
+
+# Add vertical padding (top/bottom margins)
+window-padding-y = 8
+
+# Optional: balance padding when resizing (centers content nicely)
+window-padding-balance = true
