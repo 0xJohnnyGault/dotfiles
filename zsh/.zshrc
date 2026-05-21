@@ -1,6 +1,11 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+plugins=(starship fzf-tab zoxide zsh-autosuggestions mise)
+source $ZSH/oh-my-zsh.sh
+
 # 10 second wait if you do something that will delete everything.  I wish I'd had this before...
 setopt RM_STAR_WAIT
 # Keep echo "station" > station from clobbering station
@@ -13,6 +18,16 @@ setopt NUMERIC_GLOB_SORT
 setopt EXTENDED_GLOB
 # hows about arrays be awesome?  (that is, frew${cool}frew has frew surrounding all the variables, not just first and last
 setopt RC_EXPAND_PARAM
+
+# Home key
+bindkey '^[[H' beginning-of-line
+bindkey '\e[H' beginning-of-line
+bindkey '\eOH' beginning-of-line
+
+# End key
+bindkey '^[[F' end-of-line
+bindkey '\e[F' end-of-line
+bindkey '\eOF' end-of-line
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 zstyle ':completion:*:descriptions' format '[%d]'
@@ -33,11 +48,6 @@ export ZOXIDE_CMD_OVERRIDE="cd"
 export ZSH_AUTOSUGGEST_STRATEGY=(history)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#aaaaaa"
 
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(starship fzf-tab zoxide zsh-autosuggestions mise)
-
-source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias aliases='alias | sort'
